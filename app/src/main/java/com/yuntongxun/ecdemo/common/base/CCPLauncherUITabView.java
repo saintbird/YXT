@@ -37,7 +37,7 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
      * Show that the third list .
      */
     public static final int TAB_VIEW_THIRD = 2;
-    public static final int TAB_VIEW_FOUR = 3;
+    //public static final int TAB_VIEW_FOUR = 3;
 
     /**
      * The holder for main TabView
@@ -53,7 +53,7 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
      * The holder for third TabView
      */
     private TabViewHolder mThirdTabView;
-    private TabViewHolder mFourTabView;
+    //private TabViewHolder mFourTabView;
 
     /**
      * Follow the label moved slowly
@@ -167,9 +167,9 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
         imageViewLayoutParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.main_tab_root);
         addView(mSlideImage = imageView, imageViewLayoutParams);
 
-        // TabView dial
+        // TabView guest
         TabViewHolder tabViewMain = createTabView(TAB_VIEW_MAIN);
-        tabViewMain.tabView.setText(R.string.main_title);
+        tabViewMain.tabView.setText(R.string.main_guest);
         LinearLayout.LayoutParams enbGroupLayoutParams = new LinearLayout.LayoutParams(
                 0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
         enbGroupLayoutParams.weight = 1.0F;
@@ -185,24 +185,24 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
         layout.addView(tabViewSecond.tabView, secondLayoutParams);
         mSecondTabView = tabViewSecond;
 
-        // TabView contacts
-        TabViewHolder tabViewContacts = createTabView(TAB_VIEW_THIRD);
-        tabViewContacts.tabView.setText(R.string.main_group);
+        // TabView basic
+        TabViewHolder tabViewBasic = createTabView(TAB_VIEW_THIRD);
+        tabViewBasic.tabView.setText(R.string.main_basic);
         LinearLayout.LayoutParams contactsLayoutParams = new LinearLayout.LayoutParams(
                 0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
         contactsLayoutParams.weight = 1.0F;
-        layout.addView(tabViewContacts.tabView, contactsLayoutParams);
-        mThirdTabView = tabViewContacts;
+        layout.addView(tabViewBasic.tabView, contactsLayoutParams);
+        mThirdTabView = tabViewBasic;
         
         
         // 讨论组
-        TabViewHolder tabViewDisGroup = createTabView(TAB_VIEW_FOUR);
-        tabViewDisGroup.tabView.setText(R.string.main_discussiongroup);
-        LinearLayout.LayoutParams fourLayoutParams = new LinearLayout.LayoutParams(
-        		0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
-        fourLayoutParams.weight = 1.0F;
-        layout.addView(tabViewDisGroup.tabView, fourLayoutParams);
-        mFourTabView = tabViewDisGroup;
+//        TabViewHolder tabViewDisGroup = createTabView(TAB_VIEW_FOUR);
+//        tabViewDisGroup.tabView.setText(R.string.main_discussiongroup);
+//        LinearLayout.LayoutParams fourLayoutParams = new LinearLayout.LayoutParams(
+//        		0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
+//        fourLayoutParams.weight = 1.0F;
+//        layout.addView(tabViewDisGroup.tabView, fourLayoutParams);
+//        mFourTabView = tabViewDisGroup;
     }
 
     /**
@@ -240,9 +240,9 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
             case TAB_VIEW_THIRD:
                 mThirdTabView.tabView.setText(resid);
                 break;
-            case TAB_VIEW_FOUR:
-            	mFourTabView.tabView.setText(resid);
-            	break;
+//            case TAB_VIEW_FOUR:
+//            	mFourTabView.tabView.setText(resid);
+//            	break;
            
             default:
                 break;
@@ -264,14 +264,14 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
 
 
     public final void resetTabViewDesc() {
-        if(mMainTabView == null || mSecondTabView == null || mThirdTabView == null||mFourTabView.tabView==null) {
+        if(mMainTabView == null || mSecondTabView == null || mThirdTabView == null) {
             return;
         }
 
         mMainTabView.tabView.notifyChange();
         mSecondTabView.tabView.notifyChange();
         mThirdTabView.tabView.notifyChange();
-        mFourTabView.tabView.notifyChange();
+        //mFourTabView.tabView.notifyChange();
     }
 
 
@@ -313,7 +313,7 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
         mMainTabView.tabView.notifyChange();
         mSecondTabView.tabView.notifyChange();
         mThirdTabView.tabView.notifyChange();
-        mFourTabView.tabView.notifyChange();
+        //mFourTabView.tabView.notifyChange();
     }
 
     /**
@@ -394,28 +394,28 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
                 mMainTabView.tabView.setTextColor(getResources().getColorStateList(R.color.red_btn_color_normal));
                 mSecondTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 mThirdTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
-                mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+                //mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 break;
             case TAB_VIEW_SECOND:
                 mMainTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 mSecondTabView.tabView.setTextColor(getResources().getColorStateList(R.color.red_btn_color_normal));
                 mThirdTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
-                mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+                //mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 break;
             case TAB_VIEW_THIRD:
                 mMainTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 mSecondTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 mThirdTabView.tabView.setTextColor(getResources().getColorStateList(R.color.red_btn_color_normal));
-                mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+                //mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
                 
                 break;
-            case TAB_VIEW_FOUR:
-            	mMainTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
-            	mSecondTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
-            	mThirdTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
-            	mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.red_btn_color_normal));
+//            case TAB_VIEW_FOUR:
+//            	mMainTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+//            	mSecondTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+//            	mThirdTabView.tabView.setTextColor(getResources().getColorStateList(R.color.launcher_tab_text_selector));
+//            	mFourTabView.tabView.setTextColor(getResources().getColorStateList(R.color.red_btn_color_normal));
             	
-            	break;
+//            	break;
             default:
                 break;
         }
@@ -425,7 +425,7 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         LogUtil.d(LogUtil.getLogUtilsTag(CCPLauncherUITabView.class), "on layout, width " + (r - l));
-        int width = mTabViewBaseWidth = ((r - l) / 4);
+        int width = mTabViewBaseWidth = ((r - l) / 3);
 
         if(mIndicatorBitmap == null || mIndicatorBitmap.getWidth() != mTabViewBaseWidth) {
 

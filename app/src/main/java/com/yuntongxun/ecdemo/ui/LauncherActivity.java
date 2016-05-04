@@ -134,10 +134,15 @@ public class LauncherActivity extends ECFragmentActivity implements
 	private static final int TAB_ADDRESS = 1;
 
 	/**
+	 * 基础组件
+	 */
+	private static final int TAB_BASIC = 2;
+
+	/**
 	 * 群组界面
 	 */
-	private static final int TAB_GROUP = 2;
-	private static final int TAB_DISCUSSION_GROUP = 3;
+//	private static final int TAB_GROUP = 2;
+//	private static final int TAB_DISCUSSION_GROUP = 3;
 
 	/**
 	 * {@link CCPLauncherUITabView} 是否已经被初始化
@@ -329,17 +334,24 @@ public class LauncherActivity extends ECFragmentActivity implements
 							MobileContactActivity.MobileContactFragment.class
 									.getName(), null);
 			break;
-		case TAB_GROUP:
-			
-			
-			mFragment = (TabFragment) Fragment.instantiate(this,
-					GroupListFragment.class.getName(), null);
+
+		case TAB_BASIC:
+			mFragment = (TabFragment) Fragment
+					.instantiate(this,
+							MobileContactActivity.MobileContactFragment.class
+									.getName(), null);
 			break;
-		case TAB_DISCUSSION_GROUP:
-			
-			mFragment = (TabFragment) Fragment.instantiate(this,
-					DiscussionListFragment.class.getName(), null);
-			break;
+//		case TAB_GROUP:
+//
+//
+//			mFragment = (TabFragment) Fragment.instantiate(this,
+//					GroupListFragment.class.getName(), null);
+//			break;
+//		case TAB_DISCUSSION_GROUP:
+//
+//			mFragment = (TabFragment) Fragment.instantiate(this,
+//					DiscussionListFragment.class.getName(), null);
+//			break;
 
 		default:
 			break;
@@ -688,7 +700,7 @@ public class LauncherActivity extends ECFragmentActivity implements
 
 		@Override
 		public int getCount() {
-			return 4;
+			return 3;
 		}
 
 		@Override
@@ -727,12 +739,12 @@ public class LauncherActivity extends ECFragmentActivity implements
 					mGroupListFragment.onGroupFragmentVisible(true);
 				}
 			}
-			if (positionOffset != 0.0F&&position==CCPLauncherUITabView.TAB_VIEW_FOUR) {
-				if (mDissListFragment == null) {
-					mDissListFragment = (DiscussionListFragment) getTabView(CCPLauncherUITabView.TAB_VIEW_FOUR);
-					mDissListFragment.onDisGroupFragmentVisible(true);
-				}
-			}
+//			if (positionOffset != 0.0F&&position==CCPLauncherUITabView.TAB_VIEW_FOUR) {
+//				if (mDissListFragment == null) {
+//					mDissListFragment = (DiscussionListFragment) getTabView(CCPLauncherUITabView.TAB_VIEW_FOUR);
+//					mDissListFragment.onDisGroupFragmentVisible(true);
+//				}
+//			}
 		
 			
 			
