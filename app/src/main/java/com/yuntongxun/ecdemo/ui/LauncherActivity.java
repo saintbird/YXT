@@ -126,7 +126,7 @@ public class LauncherActivity extends ECFragmentActivity implements
 	/**
 	 * 会话界面(沟通)
 	 */
-	private static final int TAB_CONVERSATION = 0;
+	private static final int TAB_CONVERSATION = 2;
 
 	/**
 	 * 通讯录界面(联系人)
@@ -136,7 +136,7 @@ public class LauncherActivity extends ECFragmentActivity implements
 	/**
 	 * 基础组件
 	 */
-	private static final int TAB_BASIC = 2;
+	private static final int TAB_BASIC = 0;
 
 	/**
 	 * 群组界面

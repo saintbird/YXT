@@ -167,14 +167,14 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
         imageViewLayoutParams.addRule(RelativeLayout.ALIGN_BOTTOM, R.id.main_tab_root);
         addView(mSlideImage = imageView, imageViewLayoutParams);
 
-        // TabView guest
-        TabViewHolder tabViewMain = createTabView(TAB_VIEW_MAIN);
-        tabViewMain.tabView.setText(R.string.main_guest);
-        LinearLayout.LayoutParams enbGroupLayoutParams = new LinearLayout.LayoutParams(
+        // TabView basic
+        TabViewHolder tabViewBasic = createTabView(TAB_VIEW_MAIN);
+        tabViewBasic.tabView.setText(R.string.main_basic);
+        LinearLayout.LayoutParams contactsLayoutParams = new LinearLayout.LayoutParams(
                 0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
-        enbGroupLayoutParams.weight = 1.0F;
-        layout.addView(tabViewMain.tabView, enbGroupLayoutParams);
-        mMainTabView = tabViewMain;
+        contactsLayoutParams.weight = 1.0F;
+        layout.addView(tabViewBasic.tabView, contactsLayoutParams);
+        mMainTabView= tabViewBasic;
 
         // TabView communication
         TabViewHolder tabViewSecond = createTabView(TAB_VIEW_SECOND);
@@ -185,16 +185,15 @@ public class CCPLauncherUITabView extends RelativeLayout implements View.OnClick
         layout.addView(tabViewSecond.tabView, secondLayoutParams);
         mSecondTabView = tabViewSecond;
 
-        // TabView basic
-        TabViewHolder tabViewBasic = createTabView(TAB_VIEW_THIRD);
-        tabViewBasic.tabView.setText(R.string.main_basic);
-        LinearLayout.LayoutParams contactsLayoutParams = new LinearLayout.LayoutParams(
+        // TabView guest
+        TabViewHolder tabViewGuest = createTabView(TAB_VIEW_THIRD);
+        tabViewGuest.tabView.setText(R.string.main_guest);
+        LinearLayout.LayoutParams enbGroupLayoutParams = new LinearLayout.LayoutParams(
                 0, getResources().getDimensionPixelSize(R.dimen.DefaultTabbarHeight));
-        contactsLayoutParams.weight = 1.0F;
-        layout.addView(tabViewBasic.tabView, contactsLayoutParams);
-        mThirdTabView = tabViewBasic;
-        
-        
+        enbGroupLayoutParams.weight = 1.0F;
+        layout.addView(tabViewGuest.tabView, enbGroupLayoutParams);
+        mThirdTabView = tabViewGuest;
+
         // 讨论组
 //        TabViewHolder tabViewDisGroup = createTabView(TAB_VIEW_FOUR);
 //        tabViewDisGroup.tabView.setText(R.string.main_discussiongroup);
