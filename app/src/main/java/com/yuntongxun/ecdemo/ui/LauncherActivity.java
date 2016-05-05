@@ -41,7 +41,6 @@ import com.yuntongxun.ecdemo.common.ECContentObservers;
 import com.yuntongxun.ecdemo.common.base.CCPCustomViewPager;
 import com.yuntongxun.ecdemo.common.base.CCPLauncherUITabView;
 import com.yuntongxun.ecdemo.common.base.OverflowAdapter;
-import com.yuntongxun.ecdemo.common.base.OverflowAdapter.OverflowItem;
 import com.yuntongxun.ecdemo.common.base.OverflowHelper;
 import com.yuntongxun.ecdemo.common.dialog.ECAlertDialog;
 import com.yuntongxun.ecdemo.common.dialog.ECProgressDialog;
@@ -396,56 +395,10 @@ public class LauncherActivity extends ECFragmentActivity implements
 		}
 
 	}
-	/**
-	 * 根据底层库是否支持voip加载相应的子菜单
-	 */
-	void initOverflowItems() {
-		if (mItems == null) {
-			if (SDKCoreHelper.getInstance().isSupportMedia()) {
-				mItems = new OverflowAdapter.OverflowItem[7];
-				mItems[0] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_inter_phone));
-				mItems[1] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_meeting_voice));
-				mItems[2] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_meeting_video));
-				mItems[3] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_groupchat));
-				mItems[4] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_querygroup));
-				
-				mItems[5] = new OverflowAdapter.OverflowItem(
-						getString(R.string.create_discussion));
-				
-				
-				
-				mItems[6] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_settings));
 
-			} else {
-				mItems = new OverflowAdapter.OverflowItem[4];
-				mItems[0] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_groupchat));
-				mItems[1] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_querygroup));
-				
-				
-				mItems[2] = new OverflowAdapter.OverflowItem(
-						getString(R.string.create_discussion));
-				
-				
-				mItems[3] = new OverflowAdapter.OverflowItem(
-						getString(R.string.main_plus_settings));
-				
-
-			}
-		}
-
-	}
 
 	@Override
 	public boolean onMenuOpened(int featureId, Menu menu) {
-		controlPlusSubMenu();
 		return false;
 	}
 
@@ -594,26 +547,6 @@ public class LauncherActivity extends ECFragmentActivity implements
 		String registAccount = sharedPreferences.getString(registAuto.getId(),
 				(String) registAuto.getDefaultValue());
 		return registAccount;
-	}
-
-	private void controlPlusSubMenu() {
-		if (mOverflowHelper == null) {
-			return;
-		}
-
-		if (mOverflowHelper.isOverflowShowing()) {
-			mOverflowHelper.dismiss();
-			return;
-		}
-		
-		if(mItems == null) {
-			initOverflowItems();
-		}
-		
-		mOverflowHelper.setOverflowItems(mItems);
-		mOverflowHelper
-				.setOnOverflowItemClickListener(mOverflowItemCliclListener);
-		mOverflowHelper.showAsDropDown(findViewById(R.id.btn_plus));
 	}
 
 	@Override
@@ -797,7 +730,7 @@ public class LauncherActivity extends ECFragmentActivity implements
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.btn_plus) {
-			controlPlusSubMenu();
+			startActivity(new Intent(LauncherActivity.this, SettingsActivity.class));
 		}
 	}
 
@@ -843,65 +776,6 @@ public class LauncherActivity extends ECFragmentActivity implements
 			return;
 		}
 	}
-
-	private final AdapterView.OnItemClickListener mOverflowItemCliclListener = new AdapterView.OnItemClickListener() {
-
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			controlPlusSubMenu();
-			
-			OverflowItem overflowItem= mItems[position];
-			String title=overflowItem.getTitle();
-			
-			if (getString(R.string.main_plus_inter_phone).equals(title)) {
-				// 实时对讲
-				startActivity(new Intent(LauncherActivity.this,
-						InterPhoneListActivity.class));
-			} else if (getString(R.string.main_plus_meeting_voice).equals(title)) {
-				// 语音会议
-				startActivity(new Intent(LauncherActivity.this,
-						MeetingListActivity.class));
-			} else if (getString(R.string.main_plus_groupchat).equals(title)) {
-				// 创建群组
-				startActivity(new Intent(LauncherActivity.this,
-						CreateGroupActivity.class));
-			} else if (getString(R.string.main_plus_querygroup).equals(title)) {
-				// 群组搜索
-				startActivity(new Intent(LauncherActivity.this,BaseSearch.class));
-			} else if (getString(R.string.main_plus_mcmessage).equals(title)) {
-				handleStartServiceEvent();
-				
-			} else if (getString(R.string.main_plus_settings).equals(title)) {
-				// 设置;
-				startActivity(new Intent(LauncherActivity.this,SettingsActivity.class));
-				
-				
-			} else if (getString(R.string.main_plus_meeting_video).equals(title)) {
-				startActivity(new Intent(LauncherActivity.this,
-						VideoconferenceConversation.class));
-
-			}else if(getString(R.string.create_discussion).equals(title)){
-				
-				Intent intent=new Intent(LauncherActivity.this, MobileContactSelectActivity.class);
-				intent.putExtra("is_discussion", true);
-				intent.putExtra("isFromCreateDiscussion", true);
-				intent.putExtra("group_select_need_result", true);
-				
-				startActivity(intent);
-				
-				
-			}else if(getString(R.string.query_discussion).equals(title)){
-				
-				Intent intent=new Intent(LauncherActivity.this, ECDiscussionActivity.class);
-				intent.putExtra("is_discussion", true);
-				
-				startActivity(intent);
-				
-			}
-		}
-
-	};
 
 	/**
 	 * 在线客服

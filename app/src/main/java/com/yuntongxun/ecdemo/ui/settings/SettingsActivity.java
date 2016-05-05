@@ -158,8 +158,8 @@ public class SettingsActivity extends ECSuperActivity implements View.OnClickLis
 
         initView();
         getTopBarView().setTopBarToStatus(1, R.drawable.topbar_back_bt,
-                R.drawable.btn_style_green, null,
-                getString(R.string.app_server_config),
+                0, null,
+                null,
                 getString(R.string.app_set), null, this);
 
         registerReceiver(new String[]{SDKCoreHelper.ACTION_LOGOUT});
@@ -172,9 +172,10 @@ public class SettingsActivity extends ECSuperActivity implements View.OnClickLis
         mPhotoView = (ImageView) findViewById(R.id.desc);
         mUsername = (EmojiconTextView) findViewById(R.id.contact_nameTv);
         mNumber = (TextView) findViewById(R.id.contact_numer);
-       mSignureTv = (TextView) findViewById(R.id.contact_signure);
+        mSignureTv = (TextView) findViewById(R.id.contact_signure);
         
         mSignureTv.setText(CCPAppManager.getClientUser().getSignature());
+        mPhotoView.setOnClickListener(this);
 
         mSettingSound = (SettingItem) findViewById(R.id.settings_new_msg_sound);
         mSettingSound.getCheckedTextView().setOnClickListener(new View.OnClickListener() {
@@ -374,14 +375,11 @@ public class SettingsActivity extends ECSuperActivity implements View.OnClickLis
                 hideSoftKeyboard();
                 finish();
                 break;
-            case R.id.text_right:
+            case R.id.desc:
                 startActivity(new Intent(this , SettingPersionInfoActivity.class));
                 break;
             case R.id.settings_about:
                 startActivity(new Intent(this , AboutActivity.class));
-
-
-
                 break;
             default:
                 break;

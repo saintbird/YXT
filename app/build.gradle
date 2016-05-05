@@ -7,7 +7,7 @@ android {
         applicationId "com.yuntongxun.ecdemo"
         minSdkVersion 9
         versionCode 17
-        versionName "5.2.0r"
+        versionName "1.0.0 Beta"
     }
     buildTypes {
         release {
@@ -26,7 +26,7 @@ android {
             minSdkVersion 9
             applicationId 'com.yuntongxun.ecdemo'
             versionCode 17
-            versionName '5.2.0r'
+            versionName '1.0.0 Beta'
         }
     }
 }
