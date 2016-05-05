@@ -17,8 +17,13 @@
     <string name="main_contact">联系人组件</string>
     <string name="main_group">群组</string>
     <string name="main_discussiongroup">讨论组</string>
-    <string name="main_guest">在线实时反馈</string>
+    <string name="main_guest">在线反馈组件</string>
     <string name="main_basic">基础组件</string>
+    <string name="basic_voice">实时语音</string>
+    <string name="basic_mul_voice">多人语音</string>
+    <string name="basic_voip">网络电话</string>
+    <string name="basic_phone">落地电话</string>
+
     <string name="unread_count_overt_100">"..."</string>
     <string name="common_enter_activity">当前所在页面,</string>
     <string name="logout_menu_more">更多</string>

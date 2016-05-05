@@ -338,7 +338,7 @@ public class LauncherActivity extends ECFragmentActivity implements
 		case TAB_BASIC:
 			mFragment = (TabFragment) Fragment
 					.instantiate(this,
-							MobileContactActivity.MobileContactFragment.class
+							BasicAbilityFragment.class
 									.getName(), null);
 			break;
 //		case TAB_GROUP:
